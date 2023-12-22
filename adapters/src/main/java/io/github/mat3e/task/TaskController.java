@@ -32,10 +32,7 @@ class TaskController {
         return new ArrayList<>(taskQueryRepository.findBy(TaskDto.class));
     }
 
-    @GetMapping(params = "changes")
-    List<TaskWithChangesQueryDto> listWithChanges() {
-        return new ArrayList<>(taskQueryRepository.findBy(TaskWithChangesQueryDto.class));
-    }
+
 
     @GetMapping("/{id}")
     ResponseEntity<TaskDto> get(@PathVariable int id) {
@@ -49,7 +46,7 @@ class TaskController {
         if (id != toUpdate.getId() && toUpdate.getId() != 0) {
             throw new IllegalStateException("Id in URL is different than in body: " + id + " and " + toUpdate.getId());
         }
-        taskFacade.save(toUpdate.withId(id));
+        System.out.println("dd");
         return ResponseEntity.noContent().build();
     }
 
