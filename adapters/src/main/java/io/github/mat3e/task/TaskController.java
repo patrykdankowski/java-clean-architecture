@@ -29,6 +29,7 @@ class TaskController {
 
     @GetMapping
     List<TaskDto> list() {
+        System.out.println("a");
         return new ArrayList<>(taskQueryRepository.findBy(TaskDto.class));
     }
 
